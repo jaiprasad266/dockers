@@ -1,0 +1,13 @@
+docker run --privileged -d --name dind-test docker:dind
+docker run --privileged -d --name dind-test1 docker:dind_custom
+
+docker build . -t docker:dind_custom_v1
+
+docker run --privileged -d --name dind-test1 docker:dind_custom_v1
+
+docker tag docker:dind_custom_v1 dockeridjai/docker:dind_custom_v1
+
+docker push dockeridjai/docker:dind_custom_v1
+
+
+docker pull dockeridjai/docker:dind_custom_v1
